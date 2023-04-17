@@ -1,0 +1,79 @@
+:root{
+    --primary: burlywood;
+    --secondary: purple;
+    --dark: brown;
+    --light:black;
+}
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+
+ }
+
+ body {
+    background-color: var(--light);
+    color: burlywood;
+ }
+
+ .App {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+ }
+
+ .Reactjs Calculator{
+    width:100%;
+    max-width: 400%;
+    background-color: azure;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:0px 2px 64px rgba(red, green, blue, alpha);
+ }
+ .display {
+    padding:16px;
+    text-align: right;
+    background-color: var(--dark);
+    color: var(--light);
+    font-size: 24px;
+    font-weight: 300;
+ }
+ .display span {
+    font-size: 14px;
+    color: gray;
+ }
+
+ button {
+    appearance: none;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 20px;
+    padding: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+ }
+ button:hover {
+    opacity: 0.9;
+ }
+ .operators{
+    display: flex;
+ }
+ .operators button{
+    flex:1 1 0%;
+    background-color: var(--primary);
+    font-weight: 700;
+
+ }
+ .digit {
+    display:flex;
+    flex-wrap: wrap;
+ }
+ .digit button{
+    flex: 1 1 33.333%;
+    max-width:33.333%;
+    background-color: var(--dark);
+ }
