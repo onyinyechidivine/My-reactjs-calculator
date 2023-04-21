@@ -7,24 +7,43 @@ const ops = ['+','-','*','/','DEL'];
 
 const updateCalc = value => {
   if (
-    ops.includes(value) && calc === ''||
-    ops.includes(value) && ops.includes(calc.slice(-1))
+    (ops.includes(value) && (calc === ''))||
+    (ops.includes(value) && ops.includes(calc.slice(-1)))
   ){
     return;
   }
   setCalc(calc + value);
   if(!ops.includes(value)) {
-    setResult(eval(calc + value) .toString());
+    setResult(Eval(calc + value).toString());
   }
   
+}
+const solveSingle = (arr) =>{
+  arr = arr.slice();
+  while(arr.length-1){
+    if (arr[1] ==='*') arr[0] = arr[0] * arr[2]
+    if (arr[1] ==='+') arr[0] = +arr[0] + (+arr[2])
+    if (arr[1] ==='-') arr[0] = arr[0] - arr[2]
+    if (arr[1] ==='/') arr[0] = arr[0] / arr[2]
+    arr.splice(1,1);
+    arr.splice(1,1);
+  }
+  return arr[0];
+
+}
+const Eval =(eq) =>{
+  let res = eq.split(/(\+|-)/g).map(x => x.trim().split(/(\*|\/)/g).map(a =>a.trim()));
+  res = res.map(x => solveSingle(x));//evaluate nexted * and / operations.
+  return solveSingle(res) //at last evaluating + and -
 }
   
 
   const calculate = () => {
-    setCalc(eval(calc).toString());
+    setCalc(Eval(calc).toString());
   }
-  const deleteLast = () => {
-    if (calc == '') {
+
+  const deleteLast = () => { 
+    if (calc === '') {
       return;
     }
     const value = calc.slice(0, -1);
